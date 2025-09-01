@@ -4,14 +4,14 @@ import logging
 
 logging.basicConfig(level=logging.INFO,format='[%(asctime)s]:%(message)s:')
 
-project_name="Textsummarizer"
+project_name="textsummarizer"
 list_of_files=[
-    ".github/workflows/.gitkeer",
+    ".github/workflows/.gitkeep",
     f"src/{project_name}/_init_py",
     f"src/{project_name}/components/_init_py",
-    f"src/{project_name}/utils/__init__.py"
+    f"src/{project_name}/utils/__init__.py",
     f"src/{project_name}/utils/common.py",
-    f"src/{project_name}/logging//__init__.py",
+    f"src/{project_name}/logging/__init__.py",
     f"src/{project_name}/config/__init__.py",
     f"src/{project_name}/config/configuration.py",
     f"src/{project_name}/pipeline/__init__.py",

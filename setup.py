@@ -3,9 +3,9 @@ with open("README.md","r", encoding="utf-8")as fh:
           long_description = fh.read()
 
 __version__ ="0.0.0"
-REPO_NAME = "Text-Summarizer"
+REPO_NAME = "TEXT-SUMMARIZER"
 AUTHOR_USER_NAME ="Tilak-Bonala"
-SRC_REPO ="TExtsummarizer"
+SRC_REPO ="Textsummarizer"
 AUTHOR_EMAIL="tilakbonala99@gmail.com"
 
 setuptools.setup(
