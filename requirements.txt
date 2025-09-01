@@ -114,7 +114,6 @@ python-box==7.0.0
 python-dateutil==2.9.0.post0
 python-json-logger==3.3.0
 pytz==2025.2
-pywin32==310
 pywinpty==2.0.15
 PyYAML==6.0.2
 pyzmq==27.0.0
@@ -142,7 +141,7 @@ terminado==0.18.1
 -e git+https://github.com/Tilak-Bonala/Text-Summarizer.git@3d16809df0ea901b9677186619abb1045a6dfade#egg=TExtsummarizer
 texttable==1.7.0
 tinycss2==1.4.0
-tokenizers==0.21.2
+tokenizers>=0.21,<0.22
 tomli==2.2.1
 torch==2.7.1
 tornado==6.5.1
