@@ -32,12 +32,14 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
       - name: Free disk space before build
         run: |
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /opt/ghc
           sudo rm -rf /usr/local/share/boost
           docker system prune -af
+          docker volume prune -f
 
       - name: Install Utilities
         run: |

@@ -142,7 +142,9 @@ texttable==1.7.0
 tinycss2==1.4.0
 tokenizers>=0.21,<0.22
 tomli==2.2.1
-torch==2.7.1
+torch==2.2.0+cpu
+torchvision==0.17.0+cpu
+-f https://download.pytorch.org/whl/torch_stable.html
 tornado==6.5.1
 tqdm==4.67.1
 traitlets==5.14.3
