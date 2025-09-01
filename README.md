@@ -14,4 +14,7 @@
 
 # How to run?
 
-# 
+#
+
+
+URI:438465160285.dkr.ecr.us-east-2.amazonaws.com/text-sum
