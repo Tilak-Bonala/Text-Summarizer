@@ -1,13 +1,21 @@
 FROM python:3.11-slim
 
-RUN apt update -y && apt install awscli -y
+# Set working directory
 WORKDIR /app
 
-COPY . /app
+# Install system dependencies (git + build essentials)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git build-essential \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN pip install -r requirements.txt
-RUN pip install --upgrade accelerate
-RUN pip uninstall -y transformers accelerate
-RUN pip install transformers accelerate
+# Copy requirements
+COPY requirements.txt .
 
-CMD ["python3", "app.py"]
+# Upgrade pip & install dependencies
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy app source
+COPY . .
+
+CMD ["python", "app.py"]
