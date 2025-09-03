@@ -1,36 +1,34 @@
 from fastapi import FastAPI
-import uvicorn 
+from fastapi.responses import JSONResponse, RedirectResponse
+import uvicorn
 import os
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import RedirectResponse
-from starlette.responses import Response
 from textsummarizer.pipeline.prediction_pipeline import PredictionPipeline
 
-text:str ="What is Text Summarization?"
-
 app = FastAPI()
-@app.get("/",tags=["authentication"])
+
+# Redirect root to Swagger UI
+@app.get("/", tags=["authentication"])
 async def index():
     return RedirectResponse(url="/docs")
 
+# Train endpoint (not recommended for production, but okay for demo)
 @app.get("/train")
-async def training ():
+async def training():
     try:
         os.system("python main.py")
-        return Responce(content="Training has been started")
+        return JSONResponse(content={"message": "Training has been started"})
     except Exception as e:
-        return Responce(content=f"Error Occured! {e}")
+        return JSONResponse(content={"error": str(e)}, status_code=500)
 
-
+# Predict endpoint
 @app.get("/predict")
-async def predict_route(text:str=text):
+async def predict_route(text: str):
     try:
         obj = PredictionPipeline()
         summary = obj.predict(text)
-        return Response(content=summary)
+        return JSONResponse(content={"summary": summary})
     except Exception as e:
-        raise Response(content=f"Error Occured! {e}")
-    
-if __name__ == "__main__":
-    uvicorn.run(app,host="0.0.0.0",port=8080)
+        return JSONResponse(content={"error": str(e)}, status_code=500)
 
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8080)
