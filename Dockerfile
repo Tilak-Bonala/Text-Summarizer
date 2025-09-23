@@ -9,5 +9,7 @@ RUN pip install -r requirements.txt
 RUN pip install --upgrade accelerate
 RUN pip uninstall -y transformers accelerate
 RUN pip install transformers accelerate
+RUN pip install -e .
+
 EXPOSE 8080
 CMD ["python3", "app.py"]
