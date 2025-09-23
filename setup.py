@@ -5,7 +5,7 @@ with open("README.md","r", encoding="utf-8")as fh:
 __version__ ="0.0.0"
 REPO_NAME = "TEXT-SUMMARIZER"
 AUTHOR_USER_NAME ="Tilak-Bonala"
-SRC_REPO ="Textsummarizer"
+SRC_REPO ="textsummarizer"
 AUTHOR_EMAIL="tilakbonala99@gmail.com"
 
 setuptools.setup(
