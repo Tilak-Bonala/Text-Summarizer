@@ -1,14 +1,17 @@
 FROM python:3.11-slim-bullseye
 
-RUN apt update -y && apt install awscli -y
+RUN apt update -y && \
+    apt install -y awscli git
+
 WORKDIR /app
+
 
 COPY . /app
 
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN pip install --upgrade accelerate
-RUN pip uninstall -y transformers accelerate
-RUN pip install transformers accelerate
+
+
 RUN pip install -e .
 
-CMD ["python3", "app.py"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
