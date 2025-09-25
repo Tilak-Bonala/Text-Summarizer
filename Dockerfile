@@ -1,14 +1,17 @@
-FROM python:3.8-slim-buster
+FROM python:3.8-slim-bullseye
 
-RUN apt update -y && apt install awscli -y
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends awscli && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
-
 COPY . /app
 
-RUN pip install -r requirements.txt
-RUN pip install --upgrade accelerate
-RUN pip uninstall -y transformers accelerate
-RUN pip install transformers accelerate
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir -e .
 
+ENV PYTHONPATH=/app/src
+EXPOSE 8080
 
-CMD ["python3", "app.py"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
