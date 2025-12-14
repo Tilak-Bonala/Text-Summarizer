@@ -15,7 +15,9 @@
 # How to run?
 
 #
+438465160285.dkr.ecr.us-east-2.amazonaws.com/text-s:latest
+
+#URI:.dkr.ecr.us-east-2.amazonaws.com/text-s
 
 
-# URI:438465160285.dkr.ecr.us-east-2.amazonaws.com/text-sum
-
+./config.sh remove --token A25KNBCDDHH5YJYPQZIFR23I2MEHG
