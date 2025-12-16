@@ -90,6 +90,7 @@ jobs:
         run: |
          docker ps -q --filter "name=text-s" | grep -q . && docker stop text-s && docker rm -fv text-s || true
 
+         
       - name: Run Docker Image to serve users
         run: |
           docker run -d -p 8080:8080 --name=text-s \
