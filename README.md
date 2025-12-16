@@ -14,10 +14,13 @@
 
 # How to run?
 
-#
-438465160285.dkr.ecr.us-east-2.amazonaws.com/text-s:latest
+## 3.Create ECR repo to store docker image 
+653340784628.dkr.ecr.us-east-2.amazonaws.com/text-s
 
 #URI:.dkr.ecr.us-east-2.amazonaws.com/text-s
 
+## 4. Create EC2 Machine
+
+## 5.Open Ec2 and install docker in Ec2 Machine:
 
 ./config.sh remove --token A25KNBCDDHH5YJYPQZIFR23I2MEHG
