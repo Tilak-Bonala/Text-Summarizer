@@ -6,11 +6,19 @@ from fastapi.templating import Jinja2Templates
 from starlette.responses import RedirectResponse
 from fastapi.responses import Response
 from textsummarizer.pipeline.prediction import PredictionPipeline
+from fastapi.middleware.cors import CORSMiddleware
 
 
 text:str = "What is Text Summarization?"
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/", tags=["authentication"])
 async def index():
