@@ -7,9 +7,12 @@ from starlette.responses import RedirectResponse
 from fastapi.responses import Response
 from textsummarizer.pipeline.prediction import PredictionPipeline
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
+class PredictRequest(BaseModel):
+    text: str
 
-text:str = "What is Text Summarization?"
+#text:str = "What is Text Summarization?"
 
 app = FastAPI()
 app.add_middleware(
