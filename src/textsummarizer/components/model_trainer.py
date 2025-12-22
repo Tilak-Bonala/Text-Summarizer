@@ -18,8 +18,8 @@ class Modeltrainer:
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         # Load tokenizer + model
-        tokenizer = AutoTokenizer.from_pretrained(self.config.model_name)
-        model = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_name).to(device)
+        tokenizer = AutoTokenizer.from_pretrained(self.config.model_ckpt)
+        model = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_ckpt).to(device)
 
         # Data collator
         seq2seq_data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)
@@ -56,6 +56,6 @@ class Modeltrainer:
         trainer.train()
 
         # Save model + tokenizer to a model-specific directory
-        model_dir = os.path.join(self.config.root_dir, self.config.model_name.replace("/", "_"))
+        model_dir = os.path.join(self.config.root_dir, self.config.model_ckpt.replace("/", "_"))
         model.save_pretrained(model_dir)
         tokenizer.save_pretrained(model_dir)

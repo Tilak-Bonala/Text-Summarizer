@@ -1,6 +1,7 @@
 from textsummarizer.config.configuration import ConfigurationManager
 from transformers import AutoTokenizer
 from transformers import pipeline
+import os
 
 
 class PredictionPipeline:
@@ -9,7 +10,8 @@ class PredictionPipeline:
 
 
     
-    def predict(self,text):
+    def predict(self,text:str)-> str:
+        model_path = os.path.abspath(self.config.model_path)
         tokenizer = AutoTokenizer.from_pretrained(self.config.model_path)
         gen_kwargs = {"length_penalty": 0.8, "num_beams":8, "max_length": 128}
 

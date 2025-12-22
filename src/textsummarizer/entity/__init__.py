@@ -28,7 +28,7 @@ class DataTransformationConfig:
 class ModelTrainerConfig:
     root_dir: Path
     data_path: Path
-    model_name: Path
+    model_ckpt: Path
     epochs: int
     warmup_steps: int
     weight_decay: float

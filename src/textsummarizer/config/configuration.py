@@ -55,7 +55,7 @@ class ConfigurationManager:
         model_trainer_config = ModelTrainerConfig(
                 root_dir = config.root_dir,
                 data_path =config.data_path,
-                model_name = config.model_name,
+                model_ckpt  = config.model_ckpt ,
                 epochs = params.epochs,
                 warmup_steps= params.warmup_steps,
                 weight_decay = params.weight_decay,

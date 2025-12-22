@@ -21,12 +21,13 @@ data_transformation:
 model_trainer:
   root_dir: artifacts/model_trainer
   data_path: artifacts/data_transformation/samsum_dataset
-  model_name: t5-small
+  model_ckpt: t5-small
 
 model_evaluation:
   root_dir: artifacts/model_evaluation
   data_path: artifacts/data_transformation/samsum_dataset
-  model_path: artifacts/model_trainer/t5-small
+  model_path : artifacts/model_trainer/t5-small
+  tokenizer_path: artifacts/model_trainer/tokenizer
   metric_file_name: artifacts/model_evaluation/metrics.csv
  
  
