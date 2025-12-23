@@ -41,21 +41,15 @@ async def training():
 
 
 
-# @app.post("/predict")
-# async def predict_route(text):
-#     try:
-
-#         obj = PredictionPipeline()
-#         text = obj.predict(text)
-#         return text
-#     except Exception as e:
-#         raise e
 @app.post("/predict")
-async def predict_route(request: PredictRequest):
-    obj = PredictionPipeline()
-    summary = obj.predict(request.text)
-    return {"summary": summary}
+async def predict_route(text):
+    try:
 
+        obj = PredictionPipeline()
+        text = obj.predict(text)
+        return text
+    except Exception as e:
+        raise e
 
 
 if __name__=="__main__":
