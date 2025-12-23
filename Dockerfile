@@ -6,6 +6,7 @@ RUN apt-get update && \
 
 WORKDIR /app
 COPY . /app
+COPY artifacts /app/artifacts
 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
