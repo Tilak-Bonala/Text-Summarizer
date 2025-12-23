@@ -47,11 +47,7 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-
-      - name: Train model and generate artifacts
-        run: |
-          python main.py
-          
+      
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
