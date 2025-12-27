@@ -6,7 +6,7 @@ RUN apt-get update && \
 
 WORKDIR /app
 COPY . /app
-# COPY artifacts /app/artifacts
+
 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
@@ -15,4 +15,4 @@ RUN pip install --upgrade pip && \
 ENV PYTHONPATH=/app/src
 EXPOSE 8080
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["python3", "app:app"]
