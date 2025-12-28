@@ -9,7 +9,7 @@ from textsummarizer.pipeline.prediction import PredictionPipeline
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-class PredictRequest(BaseModel):
+class TextInput(BaseModel):
     text: str
 
 text:str = "What is Text Summarization?"
