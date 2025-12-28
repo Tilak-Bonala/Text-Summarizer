@@ -12,16 +12,9 @@ from pydantic import BaseModel
 class PredictRequest(BaseModel):
     text: str
 
-#text:str = "What is Text Summarization?"
+text:str = "What is Text Summarization?"
 
 app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 @app.get("/", tags=["authentication"])
 async def index():
@@ -41,16 +34,20 @@ async def training():
 
 
 
+# @app.post("/predict")
+# async def predict_route(text):
+#     try:
+
+#         obj = PredictionPipeline()
+#         text = obj.predict(text)
+#         return text
+#     except Exception as e:
+#         raise e
 @app.post("/predict")
-async def predict_route(text):
-    try:
-
-        obj = PredictionPipeline()
-        text = obj.predict(text)
-        return text
-    except Exception as e:
-        raise e
-
+async def predict_route(request: TextInput):
+    obj = PredictionPipeline()
+    summary = obj.predict(request.text)
+    return {"summary": summary}
 
 if __name__=="__main__":
     uvicorn.run(app, host="0.0.0.0", port=8080)
