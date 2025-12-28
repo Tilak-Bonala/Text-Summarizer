@@ -12,7 +12,4 @@ RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
     pip install --no-cache-dir -e .
 
-ENV PYTHONPATH=/app/src
-EXPOSE 8080
-
-CMD ["python3", "app:app"]
+CMD ["python3", "app.py"]
